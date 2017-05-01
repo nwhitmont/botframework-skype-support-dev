@@ -15,6 +15,10 @@ server.get('/', function (request, response, next) {
     next();
 });
 
+server.get('/status', function (request, response) {
+    response.send({status: 'online'});
+});
+
 // Create chat bot and listen to messages
 var connector = new builder.ChatConnector({
     appId: process.env.MICROSOFT_APP_ID,
