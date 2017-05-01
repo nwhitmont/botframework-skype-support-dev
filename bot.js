@@ -10,6 +10,11 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
     console.log('%s listening to %s', server.name, server.url);
 });
 
+server.get('/', function (request, response, next) {
+    response.send(200, {status: 'online'});
+    next();
+});
+
 // Create chat bot and listen to messages
 var connector = new builder.ChatConnector({
     appId: process.env.MICROSOFT_APP_ID,
