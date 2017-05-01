@@ -1,0 +1,34 @@
+{
+  "name": "botframework-skype-support-dev",
+  "version": "1.0.0",
+  "description": "skype example for bot framework",
+  "main": "bot.js",
+  "engines": {
+    "node": "6.10.2", 
+    "npm": "3.10.10"
+  },
+  "scripts": {
+    "start": "node bot",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nwhitmont/botframework-skype-support-dev.git"
+  },
+  "keywords": [
+    "botframework",
+    "node",
+    "sdk",
+    "botbuilder"
+  ],
+  "author": "Nils Whitmont",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nwhitmont/botframework-skype-support-dev/issues"
+  },
+  "homepage": "https://github.com/nwhitmont/botframework-skype-support-dev#readme",
+  "dependencies": {
+    "botbuilder": "^3.8.0-beta8",
+    "restify": "^4.3.0"
+  }
+}
