@@ -2,14 +2,13 @@
   "name": "botframework-skype-support-dev",
   "version": "1.0.0",
   "description": "skype example for bot framework",
-  "main": "bot.js",
+  "main": "server.js",
   "engines": {
     "node": "6.10.2", 
     "npm": "3.10.10"
   },
   "scripts": {
-    "start": "node bot",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
