@@ -4,7 +4,7 @@
   "description": "skype example for bot framework",
   "main": "server.js",
   "engines": {
-    "node": "6.10.2", 
+    "node": "6.10.2",
     "npm": "3.10.10"
   },
   "scripts": {

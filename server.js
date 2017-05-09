@@ -168,3 +168,9 @@ function createAudioCard(session) {
             builder.CardAction.openUrl(session, 'https://en.wikipedia.org/wiki/The_Empire_Strikes_Back', 'Read More')
         ]);
 }
+
+bot.dialog('exit', function (session) {
+    session.endConversation('Goodbye!');
+}).triggerAction({ matches: /(quit|exit)/i });
+
+// END OF LINE
