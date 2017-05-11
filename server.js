@@ -171,6 +171,6 @@ function createAudioCard(session) {
 
 bot.dialog('exit', function (session) {
     session.endConversation('Goodbye!');
-}).triggerAction({ matches: /(quit|exit)/i })
+}).triggerAction({ matches: /(quit|exit)/i });
 
 // END OF LINE
