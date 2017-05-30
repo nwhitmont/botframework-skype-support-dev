@@ -11,12 +11,12 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 });
 
 server.get('/', function (request, response, next) {
-    response.send(200, {status: 'online'});
+    response.send(200, { status: 'online' });
     next();
 });
 
 server.get('/status', function (request, response) {
-    response.send({status: 'online'});
+    response.send({ status: 'online' });
 });
 
 // Create chat bot and listen to messages
@@ -42,6 +42,9 @@ var bot = new builder.UniversalBot(connector, [
         // attach the card to the reply message
         var msg = new builder.Message(session).addAttachment(card);
         session.send(msg);
+
+        session.send("Hi! I'm your personalized HR workflow bot. Just say 'start' to see how I can help you automate your HR workflows!");
+        session.endConversation();
     }
 ]);
 
@@ -52,7 +55,15 @@ var SigninCardName = 'Sign-in card';
 var AnimationCardName = "Animation card";
 var VideoCardName = "Video card";
 var AudioCardName = "Audio card";
-var CardNames = [HeroCardName, ThumbnailCardName, ReceiptCardName, SigninCardName, AnimationCardName, VideoCardName, AudioCardName];
+var CardNames = [
+    HeroCardName,
+    ThumbnailCardName,
+    ReceiptCardName,
+    SigninCardName,
+    AnimationCardName,
+    VideoCardName,
+    AudioCardName
+];
 
 function createCard(selectedCardName, session) {
     switch (selectedCardName) {
@@ -75,6 +86,9 @@ function createCard(selectedCardName, session) {
     }
 }
 
+function createBasicMessage(session) {
+
+}
 function createHeroCard(session) {
     return new builder.HeroCard(session)
         .title('BotFramework Hero Card')
