@@ -43,7 +43,7 @@ var bot = new builder.UniversalBot(connector, [
         var msg = new builder.Message(session).addAttachment(card);
         session.send(msg);
 
-        session.send("Hi! I'm your personalized HR workflow bot. Just say 'start' to see how I can help you automate your HR workflows!");
+        session.send("Audio, video card should work now?");
         session.endConversation();
     }
 ]);
