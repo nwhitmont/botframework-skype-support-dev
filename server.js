@@ -27,7 +27,7 @@ var bot = new builder.UniversalBot(connector, [
     function (session) {
         builder
             .Prompts
-            .choice(session, 'What card would like to test?', CardNames, {
+            .choice(session, 'Choose a test message:', CardNames, {
                 maxRetries: 3,
                 retryPrompt: 'Ooops, what you wrote is not a valid option, please try again'
             });
