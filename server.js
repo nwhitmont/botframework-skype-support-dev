@@ -209,7 +209,7 @@ function createHeroCard(session) {
 function createHeroCardWithFourButtons(session) {
     return new builder
         .HeroCard(session)
-        .title('BotFramework Hero Card')
+        .title('Hero Card w/ 4 buttons')
         .subtitle('Your bots — wherever your users are talking')
         .text('Build and connect intelligent bots to interact with your users naturally whereve' +
                 'r they are, from text/sms to Skype, Slack, Office 365 mail and other popular ser' +
