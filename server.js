@@ -170,6 +170,9 @@ function createCard(selectedCardName, session) {
         case CarouselOfCards:
             session.beginDialog('/carousel');
             break;
+        case ThumbnailCardWithFourButtons:
+            return createThumbnailCardWithFourButtons(session);
+            break;
         default:
             return createHeroCard(session);
             break;
@@ -222,7 +225,7 @@ function createThumbnailCard(session) {
 function createThumbnailCardWithFourButtons(session) {
     return new builder
         .ThumbnailCard(session)
-        .title('BotFramework Thumbnail Card')
+        .title('Thumbnail Card with 4 buttons')
         .subtitle('Your bots — wherever your users are talking')
         .text('Build and connect intelligent bots to interact with your users naturally whereve' +
                 'r they are, from text/sms to Skype, Slack, Office 365 mail and other popular ser' +
