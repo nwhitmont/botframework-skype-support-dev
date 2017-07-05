@@ -130,6 +130,7 @@ var VideoCardName = 'Video card';
 var AudioCardName = 'Audio card';
 var CarouselOfCards = 'Carousel of Cards';
 var ThumbnailCardWithFourButtons = 'Thumbnail w/ 4 Buttons';
+var HeroCardWithFourButtons = 'Hero w/ 4 Buttons';
 
 var CardNames = [
     MessageWithUrl,
@@ -141,7 +142,8 @@ var CardNames = [
     VideoCardName,
     AudioCardName,
     CarouselOfCards,
-    ThumbnailCardWithFourButtons
+    ThumbnailCardWithFourButtons,
+    HeroCardWithFourButtons
 ];
 
 function createCard(selectedCardName, session) {
@@ -173,6 +175,9 @@ function createCard(selectedCardName, session) {
         case ThumbnailCardWithFourButtons:
             return createThumbnailCardWithFourButtons(session);
             break;
+        case HeroCardWithFourButtons:
+            return createHeroCardWithFourButtons(session);
+            break;
         default:
             return createHeroCard(session);
             break;
@@ -198,6 +203,28 @@ function createHeroCard(session) {
             builder
                 .CardAction
                 .openUrl(session, 'https://docs.botframework.com/en-us/', 'Get Started')
+        ]);
+}
+
+function createHeroCardWithFourButtons(session) {
+    return new builder
+        .HeroCard(session)
+        .title('BotFramework Hero Card')
+        .subtitle('Your bots — wherever your users are talking')
+        .text('Build and connect intelligent bots to interact with your users naturally whereve' +
+                'r they are, from text/sms to Skype, Slack, Office 365 mail and other popular ser' +
+                'vices.')
+        .images([
+            builder
+                .CardImage
+                .create(session, 'https://sec.ch9.ms/ch9/7ff5/e07cfef0-aa3b-40bb-9baa-7c9ef8ff7ff5/buildreactionbo' +
+                        'tframework_960.jpg')
+        ])
+        .buttons([
+            builder.CardAction.openUrl(session, 'https://docs.botframework.com/en-us/', 'Get Started'),
+            builder.CardAction.openUrl(session, 'https://docs.microsoft.com/en-us/bot-framework/nodejs/bot-builder-nodejs-overview', 'Node SDK'),
+            builder.CardAction.openUrl(session, 'https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-overview', '.NET SDK'),
+            builder.CardAction.openUrl(session, 'https://docs.microsoft.com/en-us/bot-framework/rest-api/bot-framework-rest-overview', 'REST APIs')
         ]);
 }
 
