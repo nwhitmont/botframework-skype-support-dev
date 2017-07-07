@@ -19,6 +19,12 @@ server.get('/status', function (request, response) {
     response.send({status: 'online'});
 });
 
+// webchat route
+server.get('/webchat', restify.serveStatic({
+    directory: './public',
+    default: 'index.html'
+}));
+
 // Create chat bot and listen to messages
 var connector = new builder.ChatConnector({appId: process.env.MICROSOFT_APP_ID, appPassword: process.env.MICROSOFT_APP_PASSWORD});
 server.post('/api/messages', connector.listen());
