@@ -125,20 +125,26 @@ bot.dialog('/carousel', [
     }    
 ]);
 
-bot.dialog('suggested_actions', function(session) {
-    var msg = new builder.Message(session)
-        .text("Thank you for expressing interest in our premium golf shirt! What color of shirt would you like?")
-        .suggestedActions(
-            builder.SuggestedActions.create(
-                    session, [
-                        builder.CardAction.imBack(session, "productId=1&color=green", "Green"),
-                        builder.CardAction.imBack(session, "productId=1&color=blue", "Blue"),
-                        builder.CardAction.imBack(session, "productId=1&color=red", "Red")
+bot.dialog('suggested_actions', [
+    function (session) {
+        
+        var msg = new builder.Message(session)
+            .text("Hi! What is your favorite color?")
+            .suggestedActions(
+                builder.SuggestedActions.create(
+                    session,[
+                        builder.CardAction.imBack(session, "green", "green"),
+                        builder.CardAction.imBack(session, "blue", "blue"),
+                        builder.CardAction.imBack(session, "red", "red")
                     ]
-                ));
-    session.send(msg);
-    session.endDialog();
-});
+                )
+            );
+        builder.Prompts.choice(session, msg, ["green", "blue", "red"]);
+    },
+    function(session, results) {
+        session.send('I like ' +  results.response.entity + ' too!');
+    }
+]);
 
 var MessageWithUrl = 'Message with URL';
 var HeroCardName = 'Hero card';
