@@ -39,13 +39,14 @@ var bot = new builder.UniversalBot(connector, [
             });
     },
     function (session, results) {
-
         // create the card based on selection
         var selectedCardName = results.response.entity;
 
         if (selectedCardName === MessageWithUrl) {
             session.send('Message with URL - https://botframework.com');
             session.endConversation();
+        } else if (selectedCardName = MessageWithSuggestedActions) {
+            session.beginDialog('suggested_actions');
         } else {
             var card = createCard(selectedCardName, session);
             // attach the card to the reply message
@@ -53,7 +54,6 @@ var bot = new builder.UniversalBot(connector, [
             session.send(msg);
             session.endConversation();
         }
-
     }
 ]);
 
@@ -125,6 +125,20 @@ bot.dialog('/carousel', [
     }    
 ]);
 
+bot.dialog('suggested_actions', function(session) {
+    var msg = new builder.Message(session)
+        .text("Thank you for expressing interest in our premium golf shirt! What color of shirt would you like?")
+        .suggestedActions(
+            builder.SuggestedActions.create(
+                    session, [
+                        builder.CardAction.imBack(session, "productId=1&color=green", "Green"),
+                        builder.CardAction.imBack(session, "productId=1&color=blue", "Blue"),
+                        builder.CardAction.imBack(session, "productId=1&color=red", "Red")
+                    ]
+                ));
+    session.send(msg);
+    session.endDialog();
+});
 
 var MessageWithUrl = 'Message with URL';
 var HeroCardName = 'Hero card';
@@ -138,6 +152,7 @@ var CarouselOfCards = 'Carousel of Cards';
 var ThumbnailCardWithFourButtons = 'Thumbnail w/ 4 Buttons';
 var HeroCardWithFourButtons = 'Hero w/ 4 Buttons';
 var HeroCardWithFourButtonsNoSubtitle = 'Hero 4 buttons no subtitle';
+var MessageWithSuggestedActions = 'Suggested Actions';
 
 var CardNames = [
     MessageWithUrl,
@@ -151,7 +166,8 @@ var CardNames = [
     CarouselOfCards,
     ThumbnailCardWithFourButtons,
     HeroCardWithFourButtons,
-    HeroCardWithFourButtonsNoSubtitle
+    HeroCardWithFourButtonsNoSubtitle,
+    MessageWithSuggestedActions
 ];
 
 function createCard(selectedCardName, session) {
