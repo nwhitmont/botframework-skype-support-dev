@@ -197,7 +197,7 @@ function createHeroCard(session) {
         .subtitle('Your bots — wherever your users are talking')
         .text('Build and connect intelligent bots to interact with your users naturally whereve' +
                 'r they are, from text/sms to Skype, Slack, Office 365 mail and other popular ser' +
-                'vices.')
+                'vices.   There are two spaces in front of this line.   Did a line break happen?           Line break?')
         .images([
             builder
                 .CardImage
