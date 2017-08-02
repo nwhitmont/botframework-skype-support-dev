@@ -45,9 +45,14 @@ var bot = new builder.UniversalBot(connector, [
         if (selectedCardName === MessageWithUrl) {
             session.send('Message with URL - https://botframework.com');
             session.endConversation();
-        } else if (selectedCardName = MessageWithSuggestedActions) {
+        } 
+        else if (selectedCardName === MessageWithSuggestedActions) {
             session.beginDialog('suggested_actions');
-        } else {
+        } 
+        else if (selectedCardName === HtmlTableExample) {
+            session.beginDialog('html_table');
+        }
+        else {
             var card = createCard(selectedCardName, session);
             // attach the card to the reply message
             var msg = new builder.Message(session).addAttachment(card);
@@ -146,6 +151,16 @@ bot.dialog('suggested_actions', [
     }
 ]);
 
+bot.dialog('html_table', function (session) {
+    var tableHTML = '<table style="padding:10px;border:1px solid black;"><tr style="background-color:#c6c6c6"><th>Countries</th><th>Capitals</th><th>Population</th><th>Language</th></tr><tr><td>USA</td><td>Washington D.C.</td><td>309 million</td><td>English</td></tr><tr><td>Sweden</td><td>Stockholm</td><td>9 million</td><td>Swedish</td></tr></table>';
+    var message = {
+        type: 'message',
+        textFormat: 'xml', 
+        text: tableHTML
+    };
+    session.send(message).endDialog();
+});
+
 var MessageWithUrl = 'Message with URL';
 var HeroCardName = 'Hero card';
 var ThumbnailCardName = 'Thumbnail card';
@@ -159,6 +174,7 @@ var ThumbnailCardWithFourButtons = 'Thumbnail w/ 4 Buttons';
 var HeroCardWithFourButtons = 'Hero w/ 4 Buttons';
 var HeroCardWithFourButtonsNoSubtitle = 'Hero 4 buttons no subtitle';
 var MessageWithSuggestedActions = 'Suggested Actions';
+var HtmlTableExample = 'HTML Table';
 
 var CardNames = [
     MessageWithUrl,
@@ -173,7 +189,8 @@ var CardNames = [
     ThumbnailCardWithFourButtons,
     HeroCardWithFourButtons,
     HeroCardWithFourButtonsNoSubtitle,
-    MessageWithSuggestedActions
+    MessageWithSuggestedActions,
+    HtmlTableExample
 ];
 
 function createCard(selectedCardName, session) {
@@ -217,7 +234,6 @@ function createCard(selectedCardName, session) {
     }
 }
 
-function createBasicMessage(session) {}
 function createHeroCard(session) {
     return new builder
         .HeroCard(session)
