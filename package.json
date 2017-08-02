@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/nwhitmont/botframework-skype-support-dev#readme",
   "dependencies": {
-    "botbuilder": "^3.8.1",
+    "botbuilder": "^3.9.0",
     "restify": "^4.3.0"
   }
 }
