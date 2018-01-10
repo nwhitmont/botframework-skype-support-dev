@@ -175,6 +175,7 @@ var HeroCardWithFourButtons = 'Hero w/ 4 Buttons';
 var HeroCardWithFourButtonsNoSubtitle = 'Hero 4 buttons no subtitle';
 var MessageWithSuggestedActions = 'Suggested Actions';
 var HtmlTableExample = 'HTML Table';
+var AzureBlobStorageVideoCard = 'Azure Blob Storage Video Card';
 
 var CardNames = [
     MessageWithUrl,
@@ -190,7 +191,8 @@ var CardNames = [
     HeroCardWithFourButtons,
     HeroCardWithFourButtonsNoSubtitle,
     MessageWithSuggestedActions,
-    HtmlTableExample
+    HtmlTableExample,
+    AzureBlobStorageVideoCard
 ];
 
 function createCard(selectedCardName, session) {
@@ -227,6 +229,9 @@ function createCard(selectedCardName, session) {
             break;
         case HeroCardWithFourButtonsNoSubtitle:
             return createHeroCardWithFourButtonsNoSubtitle(session);
+            break;
+        case AzureBlobStorageVideoCard:
+            return createAzureBlobStorageVideoCard
             break;
         default:
             return createHeroCard(session);
@@ -419,6 +424,25 @@ function createVideoCard(session) {
             builder
                 .CardAction
                 .openUrl(session, 'https://peach.blender.org/', 'Learn More')
+        ]);
+}
+
+function createAzureBlobStorageVideoCard(session) {
+    return new builder
+        .VideoCard(session)
+        .title('Azure Blob Storage Video')
+        .subtitle('Example using blob storage video source.')
+        .text('Azure blob storage is a great way to store your media files for display in bot cards.')
+        .image(builder.CardImage.create(session, 'https://zularbine.com/wp-content/uploads/2016/11/image.png'))
+        .media([
+            {
+                url: 'https://reprobot1.file.core.windows.net/test/vid.mp4?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-09T14:22:21Z&st=2018-01-08T06:22:21Z&spr=https&sig=KFlUo%2FBnYCMdD1lAmp4XfUg7B78MhgyJ152vu5KlrCk%3D'
+            }
+        ])
+        .buttons([
+            builder
+                .CardAction
+                .openUrl(session, 'https://azure.microsoft.com/en-us/services/storage/blobs/', 'Learn More')
         ]);
 }
 
