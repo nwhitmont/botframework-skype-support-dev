@@ -231,7 +231,7 @@ function createCard(selectedCardName, session) {
             return createHeroCardWithFourButtonsNoSubtitle(session);
             break;
         case AzureBlobStorageVideoCard:
-            return createAzureBlobStorageVideoCard
+            return createAzureBlobStorageVideoCard(session);
             break;
         default:
             return createHeroCard(session);
