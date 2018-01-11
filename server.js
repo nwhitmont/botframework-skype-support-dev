@@ -436,7 +436,7 @@ function createAzureBlobStorageVideoCard(session) {
         .image(builder.CardImage.create(session, 'https://zularbine.com/wp-content/uploads/2016/11/image.png'))
         .media([
             {
-                url: 'https://reprobot1.file.core.windows.net/test/vid.mp4?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-09T14:22:21Z&st=2018-01-08T06:22:21Z&spr=https&sig=KFlUo%2FBnYCMdD1lAmp4XfUg7B78MhgyJ152vu5KlrCk%3D'
+                url: 'https://reprobot1.file.core.windows.net/test/vid.mp4?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-25T03:03:07Z&st=2018-01-11T19:03:07Z&spr=https&sig=LAhCHCWnLr1wVq8u0I5l%2FVwM8GIwSVpTrEufO7uDUZI%3D'
             }
         ])
         .buttons([
